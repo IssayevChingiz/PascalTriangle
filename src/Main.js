@@ -11,7 +11,6 @@ export default function App() {
         gridRowGap: "60px"
       }}
     >
-      //asdasdas
       {arr.map((val) => {
         return <Button key={val} val={val} />;
       })}
