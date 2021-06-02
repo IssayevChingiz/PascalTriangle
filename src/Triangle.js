@@ -1,21 +1,47 @@
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-export default function Triangle(props) {
+export default function Triangle() {
   let { num } = useParams();
-  let arr = [[1], [23, 34], [45, 67, 78]];
+  const [arr1, setArr1] = useState([]);
+
+  useEffect(() => {
+    if (num === 1) return [[1]];
+    let result = [];
+    for (let row = 1; row <= num; row++) {
+      let arr = [];
+      for (let col = 0; col < row; col++) {
+        if (col === 0 || col === row - 1) {
+          arr.push(1);
+        } else {
+          arr.push(result[row - 2][col - 1] + result[row - 2][col]);
+        }
+      }
+
+      result.push(arr);
+    }
+    setArr1(result);
+  }, [num]);
+
   return (
     <div>
-      <h3>Num of rows: {num}</h3>
+      <Link to={`/`}>
+        <button>close</button>
+      </Link>
 
-      {arr.map((items, index) => {
-        return (
-          <div>
-            {items.map((subItems, sIndex) => {
-              return <div> {subItems} </div>;
-            })}
-            ----------------------
-          </div>
-        );
-      })}
+      {arr1 ? (
+        arr1.map((items, index) => {
+          return (
+            <div key={index}>
+              {items.map((subItems, sIndex) => {
+                return <div key={sIndex}> {subItems} </div>;
+              })}
+              ----------------------
+            </div>
+          );
+        })
+      ) : (
+        <h1>loading</h1>
+      )}
     </div>
   );
 }

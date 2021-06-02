@@ -6,9 +6,9 @@ export default function App() {
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr",
-        gridColumnGap: "60px",
-        gridRowGap: "60px"
+        gridTemplateColumns: "0.5fr 0.5fr 0.5fr",
+        gridColumnGap: "10px",
+        gridRowGap: "50px"
       }}
     >
       {arr.map((val) => {
