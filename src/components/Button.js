@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import styles from "../css/button.module.css";
 
 export default function App({ val }) {
   let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -9,7 +10,7 @@ export default function App({ val }) {
       }}
     >
       <Link to={`/triangle/${val}`}>
-        <button style={{ minWidth: "100px", minHeight: "100px" }}>{val}</button>
+        <button className={styles.button}>{val}</button>
       </Link>
     </div>
   );
