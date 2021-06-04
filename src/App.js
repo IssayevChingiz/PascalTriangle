@@ -1,4 +1,3 @@
-import "./styles.css";
 import { Route, Switch } from "react-router-dom";
 import Main from "./Main";
 import Triangle from "./Triangle";

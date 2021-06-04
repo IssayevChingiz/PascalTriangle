@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import Row from "./components/Row";
+import styles from "./css/triangle.module.css";
 export default function Triangle() {
   let { num } = useParams();
   const [arr1, setArr1] = useState([]);
+  const [xyVal, SetXYVal] = useState([0, 0]);
 
   useEffect(() => {
     if (num === 1) return [[1]];
@@ -23,25 +26,37 @@ export default function Triangle() {
   }, [num]);
 
   return (
-    <div>
-      <Link to={`/`}>
-        <button>close</button>
-      </Link>
+    <div className={styles.mainCont}>
+      <div className={styles.childCont}>
+        <div style={{ minWidth: "200px" }}>
+          <Link to={`/`}>
+            <button>close</button>
+          </Link>
+          <br />
+          <br />
+          Current XY: {xyVal[0]} {xyVal[1]}
+        </div>
 
-      {arr1 ? (
-        arr1.map((items, index) => {
-          return (
-            <div key={index}>
-              {items.map((subItems, sIndex) => {
-                return <div key={sIndex}> {subItems} </div>;
-              })}
-              ----------------------
-            </div>
-          );
-        })
-      ) : (
-        <h1>loading</h1>
-      )}
+        <div>
+          {arr1 ? (
+            arr1.map((items, index) => {
+              return (
+                <div key={index}>
+                  <Row
+                    setXYVal={SetXYVal}
+                    arr={items}
+                    indexUp={index}
+                    key={index}
+                  />
+                  <br />
+                </div>
+              );
+            })
+          ) : (
+            <h1>loading</h1>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

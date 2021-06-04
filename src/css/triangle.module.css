@@ -1,0 +1,13 @@
+.mainCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.childCont {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 30px;
+}

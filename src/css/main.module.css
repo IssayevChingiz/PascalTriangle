@@ -1,0 +1,13 @@
+.cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.child {
+  display: grid;
+  grid-template-columns: 0.05fr 0.05fr 0.05fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 30px;
+}
